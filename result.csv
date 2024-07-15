@@ -1,3 +1,28 @@
+[0716/023122.751:WARNING:edge_sandbox_win.cc(115)] AdjustConfigForOrtDMLSandboxedProcess: ignore error in getting DIR_COMPONENT_USER
+[0716/023122.797:ERROR:cache_util_win.cc(20)] Unable to 
+move the cache: 繧｢繧ｯ繧ｻ繧ｹ縺梧拠蜷ｦ縺輔ｌ縺ｾ縺励◆縲・(0x5)
+[0716/023122.798:ERROR:disk_cache.cc(208)] Unable to create cache
+[0716/023122.799:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[0716/023122.799:ERROR:cache_util_win.cc(20)] Unable to 
+move the cache: 繧｢繧ｯ繧ｻ繧ｹ縺梧拠蜷ｦ縺輔ｌ縺ｾ縺励◆縲・(0x5)
+[0716/023122.805:ERROR:disk_cache.cc(208)] Unable to create cache
+[0716/023122.805:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+DevTools listening on ws://127.0.0.1:54211/devtools/browser/b93cafb0-9c9b-4fe4-a65d-bfa7fa567782
+[0716/023122.810:ERROR:cache_util_win.cc(20)] Unable to 
+move the cache: 繧｢繧ｯ繧ｻ繧ｹ縺梧拠蜷ｦ縺輔ｌ縺ｾ縺励◆縲・(0x5)
+[0716/023122.824:ERROR:disk_cache.cc(208)] Unable to create cache
+[0716/023122.824:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+Traceback (most recent call last):
+  File "c:\Users\Test2\Desktop\research_test1\EdgeSearcher.py", line 145, in <module>
+    main()
+  File "c:\Users\Test2\Desktop\research_test1\EdgeSearcher.py", line 90, in main
+    with open(csv_file_path, newline='', encoding='utf-8') as csvfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 
+'C:\\Test2\\Desktop\\autosearchurl\\test.csv'
+[0716/023124.813:WARNING:leveldb_database.cc(123)] Unable to open C:\Users\Test2\AppData\Local\Microsoft\Edge\User Data\Default\shared_proto_db\metadata: IO error: C:\Users\Test2\AppData\Local\Microsoft\Edge\User Data\Default\shared_proto_db\metadata/LOCK: File currently in use. 
+(ChromeMethodBFE: 15::LockFile::2)
 既存のブラウザー セッションで開いています。
 Traceback (most recent call last):
   File "c:\Users\Test2\Desktop\research_test1\EdgeSearcher.py", line 139, in <module>
