@@ -1,0 +1,46 @@
+既存のブラウザー セッションで開いています。
+Traceback (most recent call last):
+  File "c:\Users\Test2\Desktop\research_test1\EdgeSearcher.py", line 139, in <module>
+    driver = init_driver()
+             ^^^^^^^^^^^^^
+  File "c:\Users\Test2\Desktop\research_test1\EdgeSearcher.py", line 31, in init_driver
+    return webdriver.Edge(options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Test2\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\edge\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Users\Test2\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+  File "C:\Users\Test2\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 212, in __init__
+    self.start_session(capabilities)
+  File "C:\Users\Test2\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 299, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+  File "C:\Users\Test2\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 354, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Test2\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Microsoft Edge failed to start: exited normally.
+  (session not created: DevToolsActivePort file doesn't 
+exist)
+  (The process started from msedge location C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe is no longer running, so msedgedriver is assuming that msedge has crashed.)
+Stacktrace:
+        GetHandleVerifier [0x00007FF6F14D8132+13538]    
+        Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6F1461DE9+595465]
+        (No symbol) [0x00007FF6F127E6CF]
+        (No symbol) [0x00007FF6F12AE1D0]
+        (No symbol) [0x00007FF6F12AA0F3]
+        (No symbol) [0x00007FF6F12EBE27]
+        (No symbol) [0x00007FF6F12E1C63]
+        (No symbol) [0x00007FF6F12B766E]
+        (No symbol) [0x00007FF6F12B683C]
+        (No symbol) [0x00007FF6F12B7221]
+        Microsoft::Applications::Events::EventProperty::to_string [0x00007FF6F16996D4+1099860]
+        Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6F13DD8FC+53532]
+        Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6F13D0E25+1605]
+        Microsoft::Applications::Events::EventProperty::to_string [0x00007FF6F1698665+1095653]
+        Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6F146C961+27777]
+        Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6F1466CE4+4100]
+        Microsoft::Applications::Events::ILogConfiguration::operator* [0x00007FF6F1466E1B+4411]
+        Microsoft::Applications::Events::EventProperty::~EventProperty [0x00007FF6F145CFA0+575424]
+        BaseThreadInitThunk [0x00007FF9A9A27374+20]
+        RtlUserThreadStart [0x00007FF9AAAFCC91+33]
