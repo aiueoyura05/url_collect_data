@@ -16,19 +16,22 @@ csv_result_path = "output_edge0701.csv"
 fieldnames = ["id", "url", "status", "edge", "error", "redirections"]
 
 # CSVファイルのパス
-csv_file_path = r'C:\user2\Desktop\autosearchurl\url.csv'
-user_data_dir = r'C:\Users\[ユーザー名]\AppData\Local\Microsoft\Edge\User Data'
+csv_file_path = r''
+user_data_dir = r'Edge\User Data\Default'
 
 def init_driver():
     # Edgeのオプション設定
     options = Options()
+
     options.add_argument(f"user-data-dir={user_data_dir}")
     options.add_argument('--profile-directory=Default')
 
     # ヘッドレスモードを有効にする場合
     # options.add_argument('--headless')
 
+
     return webdriver.Edge(options=options)
+
 
 def check_safe_search(n, flag):
     global driver
