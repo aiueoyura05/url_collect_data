@@ -2,7 +2,7 @@ import csv
 import datetime
 import sqlite3
 import time
-import fcntl
+import msvcrt
 import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -12,8 +12,18 @@ from selenium.common.exceptions import NoSuchElementException
 # Configuration
 CSV_RESULT_PATH_TEMPLATE = "output_edge_{timestamp}.csv"
 USER_DATA_DIR = r'C:\Users\[ユーザ名]\AppData\Local\Microsoft\Edge\User Data\Default'
-DB_PATH = 'phishtank0727.db'
-LOCK_FILE_PATH = 'C:\\temp\\selenium_test_with_db.lock'  # 適切なパスに変更してください
+DB_PATH = 'C:\\path\\to\\your\\database\\phishtank0727.db'
+
+# Ensure the temp directory exists
+temp_dir = os.getenv('TEMP')
+if temp_dir is None:
+    temp_dir = os.getenv('TMP')
+
+if temp_dir is None:
+    raise EnvironmentError("Could not find the TEMP or TMP environment variables.")
+
+LOCK_FILE_PATH = os.path.join(temp_dir, 'selenium_test_with_db.lock')
+
 FETCH_INTERVAL = 3600  # 1 hour in seconds
 
 # CSV column headers
@@ -104,15 +114,22 @@ def acquire_lock(file_path):
     """Acquire file lock to prevent concurrent execution."""
     file = open(file_path, 'w')
     try:
-        fcntl.flock(file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        msvcrt.locking(file.fileno(), msvcrt.LK_NBLCK, 1)
+        logger.info("Lock acquired.")
         return file
     except IOError:
+        logger.warning("Unable to acquire lock, another instance is running.")
         return None
+
+def release_lock(file):
+    """Release the file lock."""
+    msvcrt.locking(file.fileno(), msvcrt.LK_UNLCK, 1)
+    file.close()
+    logger.info("Lock released.")
 
 def main():
     lock_file = acquire_lock(LOCK_FILE_PATH)
     if lock_file is None:
-        logger.warning("Another instance is running. Exiting.")
         exit(1)
 
     driver = init_driver()
@@ -134,10 +151,10 @@ def main():
 
             time.sleep(FETCH_INTERVAL)
     finally:
-        fcntl.flock(lock_file, fcntl.LOCK_UN)
-        lock_file.close()
+        release_lock(lock_file)
         driver.quit()
         logger.info("Resources have been released and script is exiting.")
 
 if __name__ == '__main__':
     main()
+
