@@ -3,24 +3,23 @@ import time
 import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options
 from selenium.common.exceptions import NoSuchElementException
 
 # Define file paths
 csv_input_path = "input_urls.csv"
-csv_result_path = "output_chrome0701.csv"
-user_data_dir = r'Chrome\User Data\Default'
-fieldnames = ["id", "url", "chrome", "error", "redirections"]
-
+csv_result_path = "output_edge1125.csv"
+user_data_dir = r'Edge\User Data\Default'
+fieldnames = ["id", "url", "edge", "error", "redirections"]
 
 def init_driver():
-    # Chromeのオプション設定
+    # Edgeのオプション設定
     options = Options()
     options.add_argument(f"user-data-dir={user_data_dir}")
     options.add_argument('--profile-directory=Default')
     # ヘッドレスモードを有効にする場合
     # options.add_argument('--headless')
-    return webdriver.Chrome(options=options)
+    return webdriver.Edge(options=options)
 
 def check_safe_search(n, flag):
     global driver
@@ -55,7 +54,7 @@ def write_to_csv(data):
                 writer.writerow(row)
             except:
                 print(f"Error at writing csv: {row}")
-                error_row = {"id": row["id"], "url": "error", "chrome": row["chrome"], "error": row["error"], "redirections": row["redirections"]}
+                error_row = {"id": row["id"], "url": "error", "edge": row["edge"], "error": row["error"], "redirections": row["redirections"]}
                 writer.writerow(error_row)
 
 def fetch_urls_from_csv():
@@ -101,7 +100,7 @@ def main():
                 driver.quit()
                 driver = init_driver()
             finally:
-                result = {"id": exe_count, "url": url, "chrome": safe_search, "error": error_flg, "redirections": redirections}
+                result = {"id": exe_count, "url": url, "edge": safe_search, "error": error_flg, "redirections": redirections}
                 write_to_csv([result])
                 print(result)
     # 全てのURLの処理が終わったら、ブラウザを閉じる
